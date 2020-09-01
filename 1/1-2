@@ -1,0 +1,4 @@
+dictionary : maybe like object?
+dictionary = {}, can have tuple, list
+            , string, number, float
+            , boolean, ...

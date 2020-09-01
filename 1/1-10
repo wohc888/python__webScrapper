@@ -1,0 +1,7 @@
+conditions 2
+
+1. as we used or instead of ||, and is used 
+    instead of &&
+
+2. comparison characters such as > < >= <= are
+    used the same ( might not be right )

@@ -1,0 +1,55 @@
+keyword arguments
+
+python arguments have two ways to be put
+
+1. positional argumentation
+    This method is the way I know, putting arguments
+    in order of the way the function wants
+
+2. keyword argumentation
+    unlike other languages, python's argument name affects
+    outside the function(maybe scope is wide?)
+ex)
+def minus(a, b):
+    print(a - b)
+
+minus(10, 2)
+=== 8
+
+minus(b=10, a=2)
+=== -8
+
+>>> the argument a, b is still a, b outside the
+    function, so that's why keyword argumentation
+    works
+
+How to print values in string
+
+ex)
+def say_hello(name, age):
+    print("hello name, you are age, right?")
+
+say_hello(Tom, 23)
+=== hello name, you are age, right?
+
+>>> of course, result I wanted was
+    hello Tom, you are 23, right?
+
+to make this work, there are 2 methods
+
+1. 
+def say_hello(name, age):
+    print("hello " + name + " you are " + age + 
+            " right?")
+
+>>> which is the way I know, and quite troublesome
+
+2.
+def say_hello(name, age):
+    return f"Hello {name}, you are {age}, right?"
+
+print(say_hello("Tom", 23))
+=== Hello Tom, you are 23, right?
+
+>>> f means format, the arguments need to be rapped
+    with {}, does not seem to work with print

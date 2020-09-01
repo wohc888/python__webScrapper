@@ -1,0 +1,34 @@
+import
+
+1. importing the module
+
+ex)
+import math
+
+print(math.ceil(1.2))
+print(math.floor(1.2))
+print(math.fsum([1, 2, 3, 4, 5, ...]))
+.
+.
+.
+
+>> imported the module 'math'
+
+2. importing methods from a module
+
+ex)
+from math import ceil, fsum
+
+print(ceil(1.2))
+print(fsum([1, 2, 3, 4, 5]))
+print(floor(1.2)) >>>> will cause error
+
+>> imported ceil, fsum from the module 'math'
+
+
+3. can change the name of the method from a module
+
+from math import fsum as sexy_sum
+
+
+

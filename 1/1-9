@@ -1,0 +1,8 @@
+conditions
+
+1. type() is ~ or ~
+    one of python's built-in-funtions
+    works like:
+    type() == str || type() == int
+    
+    

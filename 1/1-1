@@ -1,0 +1,3 @@
+list, tuple
+list = [], mutable
+tuple = (), immutable

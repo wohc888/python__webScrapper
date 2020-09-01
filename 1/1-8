@@ -1,0 +1,93 @@
+code challenge
+
+plus
+minus
+times
+division
+negation
+power
+
+make a calculator which is capable of functions above
+
+know that user can be dumb time to time, so
+even if "10" is entered, convert it to 10 and make it work
+
+------------------------------------------------
+def plus(a, b):
+  if(type(a) == str):
+    a = int(a)
+
+  if(type(b) == str):
+    b = int(b)
+
+  return a + b
+
+def minus(a, b):
+  if(type(a) == str):
+    a = int(a)
+
+  if(type(b) == str):
+    b = int(b)
+
+  return a - b
+
+def multiplication(a, b):
+  if(type(a) == str):
+    a = int(a)
+
+  if(type(b) == str):
+    b = int(b)
+  
+  return a * b
+
+def division(a, b):
+  if(type(a) == str):
+    a = int(a)
+
+  if(type(b) == str):
+    b = int(b)
+
+  return a / b
+
+def negation(a):
+  if(type(a) == str):
+    a = int(a)
+
+  return -a
+
+def power(a, b):
+  if(type(a) == str):
+    a = int(a)
+
+  if(type(b) == str):
+    b = int(b)
+
+    return a ** b
+
+def reminder(a, b):
+  if(type(a) == str):
+    a = int(a)
+
+  if(type(b) == str):
+    b = int(b)
+
+  return a % b
+
+def calculator():
+  print("Which function do you want?")
+  print("1. plus")
+  print("2. minus")
+  print("3. multiplication")
+  print("4. division")
+  print("5. negation")
+  print("6. power")
+  print("7. reminder")
+
+  choice = int(input("Your choice : "))
+  
+  if(choice == 1):
+    plus(int(input()))
+
+calculator()
+
+>>> need to know getting input

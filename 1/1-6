@@ -1,0 +1,6 @@
+return
+
+1. python can only return 1 result at 1 function
+
+2. after returning the result, that function is dead
+    === code under return line will not work

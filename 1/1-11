@@ -1,0 +1,18 @@
+for in
+
+numbers = (1, 2, 3, 4, 5)
+
+for x in numbers:
+    print(x)
+
+==  1
+    2
+    3
+    4
+    5
+
+>> for ~ in (tuple, list) lets you go through
+    the whole element in the list or tuple you want
+    dictionary seems to work but since there's
+    difference between two datatypes and dictionary,
+    it seems to be different

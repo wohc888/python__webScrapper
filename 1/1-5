@@ -1,0 +1,6 @@
+function arguments
+
+1. if no arguments, and no default value, it will cause error
+
+2. argument can be put anything as the name, and can be inserted any type 
+

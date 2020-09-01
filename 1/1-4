@@ -1,0 +1,21 @@
+function
+
+
+1. function is defined in pythong, no declarence
+ex)
+def say_hello()
+
+2. no {} in python when defining functions
+ex)
+def say_hello():
+
+3. use indentation to notice the body of a function
+ex)
+def say_hello():
+    print("hello")
+    print("bye")
+
+4. difference between say_hello, say_hello()
+say_hello === does nothing
+say_hello() === launch function
+
