@@ -1,0 +1,11 @@
+request package
+beautiful soup package
+
+r = request.get("url")
+
+print(r) >>> response [200]
+무슨뜻일까
+
+print(r.text) >>> whole html
+need to seperate the info
+i need from this whole html

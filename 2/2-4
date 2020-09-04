@@ -1,0 +1,25 @@
+import requests
+from bs4 import BeautifulSoup
+
+r = requests.get('https://kr.indeed.com/%EC%B7%A8%EC%97%85?q=python&limit=50&radius=25&start=0')
+
+sp = BeautifulSoup(r.text, 'html.parser')
+
+pagination = sp.find("div", {"class":
+"pagination"}) 
+
+links = pagination.find_all("a")
+pages = []
+
+for link in links[:-1]:
+  pages.append(int(link.string))
+
+pages = pages[:-1]
+max_page = pages[-1]
+
+
+-----------------------------------
+
+int() only converts sting to integer
+list[0:2] : from index 0 to index 1, no index 2
+list[:-1] : from index 0 to index before the last
