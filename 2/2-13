@@ -1,0 +1,113 @@
+main.py{
+    from so import get_jobs as get_so_jobs
+    from indeed import get_jobs as get_indeed_jobs
+
+    indeed_jobs = get_indeed_jobs()
+    so_jobs = get_so_jobs()
+
+    jobs = so_jobs + indeed_jobs
+    print(jobs)
+}
+
+indeed.py{
+    import requests
+    from bs4 import BeautifulSoup
+
+    LIMIT = 50
+    URL = f'https://kr.indeed.com/%EC%B7%A8%EC%97%85?q=python&limit={LIMIT}&radius=25&start=0'
+
+    def get_last_page():
+    result = requests.get(URL)
+    soup = BeautifulSoup(result.text, 'html.parser')
+    pagination = soup.find("div", {"class":
+    "pagination"})
+    links = pagination.find_all("a")
+    pages = []
+    for link in links[:-1]:
+        pages.append(int(link.string))
+    last_page = pages[-1]
+    return last_page
+
+    def extract_job(html):
+    title = html.find("h2", {"class": "title"}).find("a")["title"]
+    company = html.find("span", {"class": "company"})
+    company_anchor = company.find("a")
+    if company_anchor is not None:
+        company = (str(company_anchor.string))
+    else:
+        company = (str(company.string))
+    company = company.strip()
+    location = html.find("span", {"class": "location"}).string
+    job_id = html["data-jk"]
+    return {
+        'title' : title,
+        'company' : company,
+        'location' : location,
+        'link' : f'https://kr.indeed.com/채용보기?jk={job_id}&from=serp&vjs=3'
+    }
+
+    def extract_jobs(last_page):
+    jobs = [] 
+    for page in range(last_page):
+        print(f"Scrapping Indeed: Page : {page+1}")
+        result = requests.get(f"{URL}&start={page*LIMIT}")
+        soup = BeautifulSoup(result.text, "html.parser")
+        results = soup.find_all("div", {"class": "jobsearch-SerpJobCard"})
+        for result in results:
+        job = extract_job(result)
+        jobs.append(job)
+    return jobs
+
+    def get_jobs():
+    last_jobs_page = get_last_page()
+    jobs = extract_jobs(last_jobs_page)
+    return jobs
+}
+
+so.py{
+    import requests
+    from bs4 import BeautifulSoup
+
+    URL = f"https://stackoverflow.com/jobs?q=python"
+
+    def get_last_page():
+    result = requests.get(URL)
+    soup = BeautifulSoup(result.text, "html.parser")
+    pages = soup.find("div", {"class":"s-pagination"}).find_all("a")
+    last_page = pages[-2].text.strip()
+    return int(last_page)
+
+    def extract_job(html):
+    title = html.find("h2").text.strip()
+    company, location = html.find("h3", {"class": "fc-black-700"}).find_all("span", recursive=False)
+    company = company.get_text(strip=True)
+    location = location.get_text(strip=True)
+    job_id = html['data-jobid']
+    return {
+        'title': title,
+        'company': company,
+        'location': location,
+        'apply-link': f"https://stackoverflow.com/jobs/{job_id}"
+    }
+
+    def extract_jobs(last_page):
+    jobs = []
+    for page in range(last_page):
+        print(f"Scrapping SO: Page : {page+1}")
+        result = requests.get(f"{URL}&pg={page+1}")
+        soup = BeautifulSoup(result.text,"html.parser")
+        results = soup.find_all("div", {"class": "-job"})
+        for result in results:
+        job = extract_job(result)
+        jobs.append(job)
+    return jobs
+
+    def get_jobs():
+    last_page = get_last_page()
+    jobs = extract_jobs(last_page)
+    return jobs    
+}
+
+-----------------------------------------------------------
+Scrapping works well
+2-13 wraps up from 2-11 to 2-12
